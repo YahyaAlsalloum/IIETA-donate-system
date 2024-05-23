@@ -1,0 +1,55 @@
+﻿@model IIETA.Models.Catigorie
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="text-dark">DONATE NOW !</h1>
+
+
+<hr />
+<div class="row text-dark">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="Name" />
+            <input type="hidden" asp-for="Description" />
+            <input type="hidden" asp-for="Type" />
+            <input type="hidden" asp-for="Location" />
+            <input type="hidden" asp-for="Is_agent" />
+            <input type="hidden" asp-for="Total_cost" />
+            <input type="hidden" asp-for="Act_cost" />
+
+            <div class="form-group">
+                <label asp-for="Total_cost" class="control-label"></label>
+                <input asp-for="Total_cost" class="form-control" disabled />
+                <span asp-validation-for="Total_cost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Act_cost" class="control-label"></label>
+                <input asp-for="Act_cost" class="form-control" disabled />
+                <span asp-validation-for="Act_cost" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="AdditionalCost" class="control-label">Additional Cost</label>
+                <input type="number"  name="AdditionalCost" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Donate !" class="btn btn-primary" style="margin-top:15px" />
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        </form>
+
+    </div>
+</div>
+
+<div style="margin-bottom:200px;">
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

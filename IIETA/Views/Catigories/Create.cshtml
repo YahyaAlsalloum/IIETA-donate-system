@@ -1,0 +1,71 @@
+﻿@model IIETA.Models.Catigorie
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div style="margin-bottom:100px">
+<h1 class="text-dark">Create</h1>
+
+<h4 class="text-dark">Catigorie</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label text-dark"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label text-dark"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Type" class="control-label text-dark">Select Type:</label>
+                <select asp-for="Type" class="form-control">
+                    <option value="health">Health</option>
+                    <option value="education">Education</option>
+                    <option value="hunger">Hunger</option>
+                    <option value="water">Water</option>
+                    <option value="human-rights">Human Rights</option>
+                    <option value="art">Art</option>
+                </select>
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location" class="control-label text-dark"></label>
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Total_cost" class="control-label text-dark"></label>
+                <input asp-for="Total_cost" class="form-control" />
+                <span asp-validation-for="Total_cost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Act_cost" class="control-label text-dark"></label>
+                <input asp-for="Act_cost" class="form-control" />
+                <span asp-validation-for="Act_cost" class="text-danger text-dark"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label text-dark">
+                    <input class="form-check-input" asp-for="Is_agent" /> @Html.DisplayNameFor(model => model.Is_agent)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary text-dark" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div style="margin-bottom:50px;">
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+</div>

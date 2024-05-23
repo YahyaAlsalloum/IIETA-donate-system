@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - IIETA</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/IIETA.styles.css" asp-append-version="true" />
+    <link href="~/lib/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light  border-bottom box-shadow mb-3" style="background-color:#0C356A;">
+            <div class="container-fluid">
+                <img src="~/assets/logo.jpeg" style="height:100px;width:100px;border-radius:50%;" />
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">About</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Catigories" asp-action="Index">Our Causes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="handleEmails" asp-action="Create">Connect Us</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Catigories" asp-action="Admin">Admin</a>
+                        </li>
+                    </ul>
+                    <partial  name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container text-light">
+        <main role="main" class="pb-3 text-light">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted" style="background-color:#0C356A ;margin-bottom:0px;margin-top:50px">
+        <div style="text-align: center;">
+            <a href="#" style="color: #fff; margin-right: 10px;"><i class="bi bi-facebook"></i></a>
+            <a href="#" style="color: #fff; margin-right: 10px;"><i class="bi bi-instagram"></i></a>
+            <a href="#" style="color: #fff; margin-right: 10px;"><i class="bi bi-snapchat"></i></a>
+            <a href="#" style="color: #fff;"><i class="bi bi-twitter"></i></a>
+        </div>
+        <div class="container text-light">
+            &copy; 2023 - IIETA - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+        <div class="container text-light">
+            this application is developed by : majed & naser 
+        </div>
+
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

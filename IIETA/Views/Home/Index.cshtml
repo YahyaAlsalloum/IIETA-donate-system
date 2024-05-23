@@ -1,0 +1,172 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<head>
+
+    <!-- Template main Css -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+
+    <!-- Modernizr -->
+    <script src="~/assets/js/modernizr-2.6.2.min.js"></script>
+
+
+</head>
+<div class="text-center" >
+
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000" >
+        <div class="carousel-inner" >
+
+            <div class="carousel-item active" style="width:100%">
+                <div class="carousel-caption" style="width:100%">
+                    <h2 class="carousel-title bounceInDown animated slow">Together we can improve their lives</h2>
+                    <h4 class="carousel-subtitle bounceInUp animated slow">So let's do it!</h4>
+                    <a href="#" class="btn btn-lg btn-secondary hidden-xs bounceInUp animated" data-toggle="modal" data-target="#donateModal">DONATE NOW</a>
+                </div>
+                <img src="~/assets/images/slider/home-slider-1.jpg" class="img_slide d-block w-100" alt="...">
+            </div>
+
+            <div class="carousel-item">
+                <div class="carousel-caption">
+                    <div class="carousel-caption">
+                        <h2 class="carousel-title bounceInDown animated slow">Together we can improve their lives</h2>
+                        <h4 class="carousel-subtitle bounceInUp animated slow">So let's do it!</h4>
+                        <a href="#" class="btn btn-lg btn-secondary hidden-xs bounceInUp animated" data-toggle="modal" data-target="#donateModal">DONATE NOW</a>
+                    </div>
+                </div>
+                <img src="~/assets/images/slider/home-slider-2.jpg" class="img_slide d-block w-100" alt="...">
+            </div>
+
+            <div class="carousel-item">
+                <div class="carousel-caption">
+                    <div class="carousel-caption">
+                        <h2 class="carousel-title bounceInDown animated slow">Together we can improve their lives</h2>
+                        <h4 class="carousel-subtitle bounceInUp animated slow">So let's do it!</h4>
+                        <a href="#" class="btn btn-lg btn-secondary hidden-xs bounceInUp animated" data-toggle="modal" data-target="#donateModal">DONATE NOW</a>
+                    </div>
+                </div>
+                <img src="~/assets/images/slider/home-slider-3.jpg" class="img_slide d-block w-100" alt="...">
+            </div>
+        </div>
+    </div>
+
+    @*the cards-------------------------------------------*@
+    <h2 class="title-style-1" style="margin-top:25px;margin-bottom:25px;text-decoration:underline;color:dodgerblue;font-family:'Agency FB'">Our Causes <span class="title-under"></span></h2>
+    <div style="display:flex;flex-direction:row;justify-content:center;margin-top:25px;gap:5px">
+        @foreach (var catigory in Model)
+        {
+            <div class="card" style="width: 18rem;">
+                <img src="@catigory.Img" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-dark">@catigory.Name</h5>
+                    <p class="card-text text-dark">@catigory.Description</p>
+                    <a class="btn btn-primary" asp-area="" asp-controller="Catigories" asp-action="Index">DONATE NOW</a>
+
+                </div>
+            </div>
+        }
+    </div>
+
+
+ 
+    @*about----------------------------*@
+    <div class="section-home home-reasons" style="margin-top:200px">
+
+        <div class="container-about">
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="reasons-col ">
+
+                        <img src="~/assets/images/reasons/we-fight-togother.jpg" alt="">
+
+                        
+
+
+<div class="reasons-titles">
+
+                            <h3 class="reasons-title ">We fight together</h3>
+                            <h5 class="reason-subtitle ">We are humans</h5>
+
+                        </div>
+
+                        <div class="on-hover hidden-xs ">
+
+                            <p>Humanity is defined by our ability to show compassion and empathy towards one another. In a world filled with diverse cultures and backgrounds, it is our shared sense of understanding and kindness that unites us. When faced with challenges, humans have the remarkable capacity to come together, support one another, and overcome adversity.</p>
+
+                            <p>The essence of humanity lies in our commitment to helping those in need. Acts of kindness, big or small, create a ripple effect that spreads positivity throughout society. Whether it's lending a helping hand, offering a comforting word, or standing up for justice, these actions exemplify the best qualities of the human spirit.</p>
+
+                            <p>Moreover, our shared human experience is enriched by the diversity of perspectives and stories that each individual brings. By embracing our differences and fostering a sense of inclusivity, we contribute to a more harmonious world where everyone is valued and respected. In essence, humanity thrives when we acknowledge, appreciate, and celebrate the unique qualities that make each of us human.</p>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="reasons-col  ">
+
+                        <img src="~/assets/images/reasons/we-care-about.jpg" alt="">
+
+                        <div class="reasons-titles">
+
+                            <h3 class="reasons-title ">WE care about others</h3>
+                            <h5 class="reason-subtitle ">We are humans</h5>
+
+                        </div>
+
+                        <div class="on-hover hidden-xs ">
+
+                            <p>Humanity's strength is magnified when individuals unite in the face of challenges. When we stand shoulder to shoulder, our collective power becomes a force for positive change. The spirit of unity empowers us to overcome obstacles, fostering a sense of camaraderie that transcends boundaries and brings people together for a common cause.</p>
+
+                            <p>In times of crisis, humanity has consistently demonstrated its ability to unite and fight for a better future. Whether it's responding to natural disasters, addressing social injustices, or combating global issues, the resilience of the human spirit shines brightest when we join forces. Together, we can create a world where compassion, understanding, and cooperation prevail over adversity.</p>
+
+                            <p>The essence of humanity lies in the shared determination to fight for a world that is fair, just, and inclusive. When we recognize our common humanity and work collaboratively, we can break down barriers and build bridges of understanding. By fighting together, we create a ripple effect that inspires positive change, leaving a lasting impact on the world and future generations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <!-- /.our-causes -->
+    <!-- count couses -->
+    <div style="display: flex;justify-content:center;flex-direction:row;gap:20px;margin-bottom:20px;">
+        <div class="mycircle  text-dark" style="display:flex;justify-content:center;"> <span class="mt-5">number of<br /> couses : @ViewBag.CatigorieRowCount</span>  </div>
+        <div class="mycircle text-dark" style="display:flex;justify-content:center;"> <span class="mt-5">Argent<br /> couses : @ViewBag.ArgentRowCount</span> </div>
+        <div class="mycircle text-dark" style="display:flex;justify-content:center;"><span class="mt-5">Completed <br />couses : @ViewBag.EqualCostRowCount</span> </div>
+
+    </div>
+  
+    <!-- /count couses -->
+
+        <div class="container" style="margin-bottom:200px">
+        <h2 class="title-style-1 text-primary">Our Sponsors <span class="title-under"></span></h2>
+
+            <ul class="owl-carousel list-unstyled list-sponsors" style="display:flex;justify-content:center;justify-items:center;flex-direction:row;">
+
+                <li> <img src="assets/images/sponsors/bus.png" alt=""></li>
+                <li> <img src="assets/images/sponsors/wikimedia.png" alt=""></li>
+                <li> <img src="assets/images/sponsors/one-world.png" alt=""></li>
+                <li> <img src="assets/images/sponsors/wikiversity.png" alt=""></li>
+                <li> <img src="assets/images/sponsors/united-nations.png" alt=""></li>
+
+                <li> <img src="assets/images/sponsors/bus.png" alt=""></li>
+                <li> <img src="assets/images/sponsors/wikimedia.png" alt=""></li>
+                <li> <img src="assets/images/sponsors/one-world.png" alt=""></li>
+                <li> <img src="assets/images/sponsors/wikiversity.png" alt=""></li>
+                <li> <img src="assets/images/sponsors/united-nations.png" alt=""></li>
+
+            </ul>
+
+        </div>
+
+     <!-- /.our-sponsors -->
+
+
+</div>
+

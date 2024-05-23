@@ -1,0 +1,141 @@
+﻿@model IIETA.Models.handleEmail
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+<head>
+
+    <!-- Template main Css -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+
+    <!-- Modernizr -->
+    <script src="~/assets/js/modernizr-2.6.2.min.js"></script>
+
+
+</head>
+<!-- /. main-header -->
+
+<div class="page-heading text-center">
+
+    <div class="container zoomIn animated">
+
+        <h1 class="page-title ">CONTACT US <span class="title-under text-dark"></span></h1>
+        <p class="page-description ">
+            Together we can improve their lives
+            So let's do it!
+        </p>
+
+    </div>
+
+</div>
+
+<div class="main-container fadeIn animated">
+
+    <div class="container">
+
+        <div class="row">
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success">
+                    @TempData["SuccessMessage"]
+                </div>
+            }
+            <div class="col-md-7 col-sm-12 col-form">
+
+                <h2 class="title-style-2 text-dark">CONTACT US <span class="title-under"></span></h2>
+
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label text-dark"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label text-dark"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Message" class="control-label text-dark"></label>
+                        <input asp-for="Message" class="form-control" />
+                        <span asp-validation-for="Message" class="text-danger"></span>
+                    </div>
+                    <div class="form-group text-dark" style="margin-top:10px">
+                        <input type="submit" value="Send Email" class="btn btn-primary text-dark" />
+                    </div>
+                </form>
+
+
+            </div>
+
+            <div class="col-md-4 col-md-offset-1 col-contact text-dark">
+
+                <h2 class="title-style-2 text-dark"> IIETA CONTACTS <span class="title-under"></span></h2>
+                <p>
+                    <b text-dark>IIETA</b> Join hands with us in our mission for a better world. Let's connect, collaborate, and create positive change together. Your support matters.
+                </p>
+
+                <div class="contact-items text-dark">
+
+                    <ul class="list-unstyled contact-items-list text-dark">
+                        <li class="contact-item text-dark"> <span class="contact-icon"> <i class="fa fa-map-marker"></i></span class="text-dark"> 135  Abo naser, Amman, Jordan</li>
+                        <li class="contact-item text-dark"> <span class="contact-icon"> <i class="fa fa-phone"></i></span class="text-dark"> +962 780 95 7552</li>
+
+                        <li class="contact-item"> <span class="contact-icon"> <i class="fa fa-envelope"></i></span class="text-dark"> Majed@gmail.com</li>
+                    </ul>
+                </div>
+
+
+
+            </div>
+
+        </div> <!-- /.row -->
+
+
+    </div>
+
+
+
+</div>
+
+<div style="margin-bottom:300px">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27049.111716881067!2d35.90244838289832!3d32.06548995279504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151c9e6579ff6a5f%3A0x6d5493b986854c66!2z2YXZhti32YLYqSDYo9io2Ygg2YbYtdmK2LHYjCDYudmF2ZHYp9mG!5e0!3m2!1sar!2sjo!4v1700920999117!5m2!1sar!2sjo" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+
+<!-- jQuery -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="~/assets/js/jquery-1.11.1.min.js"><\/script>')</script>
+
+<!-- Bootsrap javascript file -->
+<script src="assets/js/bootstrap.min.js"></script>
+
+
+
+
+<!-- Template main javascript -->
+<script src="~/assets/js/main.js"></script>
+
+@*<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script>
+        (function (b, o, i, l, e, r) {
+            b.GoogleAnalyticsObject = l; b[l] || (b[l] =
+                function () { (b[l].q = b[l].q || []).push(arguments) }); b[l].l = +new Date;
+            e = o.createElement(i); r = o.getElementsByTagName(i)[0];
+            e.src = '//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e, r)
+        }(window, document, 'script', 'ga'));
+    ga('create', 'UA-XXXXX-X'); ga('send', 'pageview');
+</script>*@
+
+
+
+@*----------------------------------------------------*@
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

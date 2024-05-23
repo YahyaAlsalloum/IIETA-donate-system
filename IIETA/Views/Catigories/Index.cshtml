@@ -1,0 +1,476 @@
+﻿@model IEnumerable<IIETA.Models.Catigorie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<div style="background-color:#0C356A;margin-bottom:200px;">
+
+
+@*----------------------------Agrent casouses-----------------------------*@
+    <h2 class="text-light" style="display:flex;justify-content:center;font-family: cursive;"> Emergency Casouses</h2>
+
+<div class="my-main-container">
+
+    @foreach (var item in Model)
+    {
+
+        if (item.Is_agent)
+        {
+
+            double progressPercentage = 0;
+
+            if (item.Total_cost != 0)
+            {
+                //3 is the numbers after coma
+                progressPercentage = Math.Round( ((double)item.Act_cost / item.Total_cost) * 100  ,3);
+            }
+            string progressBarColor = "bg-success"; // Default color is green
+            if (item.Act_cost == 0 && item.Total_cost == 0)
+            {
+                progressPercentage = 0; progressBarColor = "bg-success";
+            }
+            // Change color based on percentage
+            if (progressPercentage < 25)
+            {
+                progressBarColor = "bg-danger"; // Red
+            }
+            else if (progressPercentage < 50)
+            {
+                progressBarColor = "bg-warning"; // Yellow
+            }
+            else if (progressPercentage < 75)
+            {
+                progressBarColor = "bg-info"; // Blue
+            }
+
+
+
+            <div class="my-container">
+
+                    <div class="card " style="width: 18rem; background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); ">
+                    <div class="progress" role="progressbar" aria-label="Health Progress" aria-valuenow="@progressPercentage" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar @progressBarColor" style="width: @progressPercentage%">@progressPercentage%</div>
+                    </div>
+                        <img src="~/assets/images/causes/em1.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title" style="margin-bottom: 25px">@item.Name</h5>
+
+                        @item.Act_cost -> @item.Total_cost
+                        <h6 class="card-subtitle mb-2 text-body-secondary">Location: @item.Location</h6>
+                        <h6 class="card-title">Description:</h6>
+                        <p class="card-text">@item.Description .</p>
+                        @if (progressPercentage != 100)
+                        {
+                            <a asp-action="Details" asp-route-id="@item.Id" class="card-link text-white">DONATE NOW !</a>
+ 
+
+                    @*< a   class="card-link text-white">DONATE NOW !</a>*@
+                        }
+                        @if (progressPercentage == 100)
+                        {
+                            <h5 class="text-light animated fadeIn">
+                                this cause is complete , check another cause !
+                            </h5>
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+
+            progressPercentage = 0;
+        }
+    }
+
+</div>
+
+@*----------------------------health-----------------------------*@
+    <h2 class="text-light" style="display:flex;justify-content:center;font-family: cursive;">Health</h2>
+
+<div class="my-main-container">
+
+    @foreach (var item in Model)
+    {
+        if (item.Type == "health")
+        {
+
+            double progressPercentage = Math.Round(((double)item.Act_cost / item.Total_cost) * 100, 3);
+            string progressBarColor = "bg-success"; // Default color is green
+
+            // Change color based on percentage
+            if (progressPercentage < 25)
+            {
+                progressBarColor = "bg-danger"; // Red
+            }
+            else if (progressPercentage < 50)
+            {
+                progressBarColor = "bg-warning"; // Yellow
+            }
+            else if (progressPercentage < 75)
+            {
+                progressBarColor = "bg-info"; // Blue
+            }
+
+
+
+                <div class="card " style="width: 18rem; background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+                <div class="progress" role="progressbar" aria-label="Health Progress" aria-valuenow="@progressPercentage" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar @progressBarColor" style="width: @progressPercentage%">@progressPercentage%</div>
+                </div>
+
+                    <img src="~/assets/images/causes/health1.jpeg" class="card-img-top" alt="...">
+
+                <div class="card-body">
+                    <h5 class="card-title" style="margin-bottom: 25px">@item.Name</h5>
+
+                    @item.Act_cost -> @item.Total_cost
+                    <h6 class="card-subtitle mb-2 text-body-secondary">Location: @item.Location</h6>
+                    <h6 class="card-title">Description:</h6>
+                    <p class="card-text">@item.Description .</p>
+                    @if (progressPercentage != 100)
+                    {
+                        <a asp-action="Details" asp-route-id="@item.Id" class="card-link text-white">DONATE NOW !</a>
+
+                    }
+                    @if (progressPercentage == 100)
+                    {
+                        <h5 class="text-light animated fadeIn">
+                            this cause is complete , check another cause !
+                        </h5>
+                    }
+
+                </div>
+            </div>
+            progressPercentage = 0;
+        }
+
+    }
+</div>
+
+
+@*----------------------------water-----------------------------*@
+    <h2 class="text-light" style="display:flex;justify-content:center;font-family: cursive;">water</h2>
+<div class="my-main-container">
+    @foreach (var item in Model)
+    {
+        if (item.Type == "water")
+        {
+
+            double progressPercentage = Math.Round(((double)item.Act_cost / item.Total_cost) * 100, 3);
+            string progressBarColor = "bg-success"; // Default color is green
+
+            // Change color based on percentage
+            if (progressPercentage < 25)
+            {
+                progressBarColor = "bg-danger"; // Red
+            }
+            else if (progressPercentage < 50)
+            {
+                progressBarColor = "bg-warning"; // Yellow
+            }
+            else if (progressPercentage < 75)
+            {
+                progressBarColor = "bg-info"; // Blue
+            }
+
+
+                <div class="card " style="width: 18rem; background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+
+                <div class="progress" role="progressbar" aria-label="Health Progress" aria-valuenow="@progressPercentage" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar @progressBarColor" style="width: @progressPercentage%">@progressPercentage%</div>
+                </div>
+
+
+                    <img src="~/assets/images/causes/water1.jpeg" class="card-img-top" alt="...">
+
+                <div class="card-body">
+                    <h5 class="card-title" style="margin-bottom: 25px">@item.Name</h5>
+
+                    @item.Act_cost -> @item.Total_cost
+                    <h6 class="card-subtitle mb-2 text-body-secondary">Location: @item.Location</h6>
+                    <h6 class="card-title">Description:</h6>
+                    <p class="card-text">@item.Description .</p>
+                    @if (progressPercentage != 100)
+                    {
+                        <a asp-action="Details" asp-route-id="@item.Id" class="card-link text-white">DONATE NOW !</a>
+
+                    }
+                    @if (progressPercentage == 100)
+                    {
+                        <h5 class=" animated fadeIn text-light">
+                            this cause is completed , check another cause !
+                        </h5>
+                    }
+
+                </div>
+            </div>
+            progressPercentage = 0;
+        }
+    }
+
+</div>
+
+
+@*----------------------------Education-----------------------------*@
+    <h2 class="text-light" style="display:flex;justify-content:center;font-family: cursive;">Education</h2>
+
+<div class="my-main-container">
+
+    @foreach (var item in Model)
+    {
+        if (item.Type == "education")
+        {
+
+            double progressPercentage = Math.Round(((double)item.Act_cost / item.Total_cost) * 100, 3);
+            string progressBarColor = "bg-success"; // Default color is green
+
+            // Change color based on percentage
+            if (progressPercentage < 25)
+            {
+                progressBarColor = "bg-danger"; // Red
+            }
+            else if (progressPercentage < 50)
+            {
+                progressBarColor = "bg-warning"; // Yellow
+            }
+            else if (progressPercentage < 75)
+            {
+                progressBarColor = "bg-info"; // Blue
+            }
+
+
+                <div class="card " style="width: 18rem; background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+                <div class="progress" role="progressbar" aria-label="Health Progress" aria-valuenow="@progressPercentage" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar @progressBarColor" style="width: @progressPercentage%">@progressPercentage%</div>
+                </div>
+
+                    <img src="~/assets/images/causes/edu1.jpeg" class="card-img-top" alt="...">
+
+                <div class="card-body">
+                    <h5 class="card-title" style="margin-bottom: 25px">@item.Name</h5>
+
+                    @item.Act_cost -> @item.Total_cost
+                    <h6 class="card-subtitle mb-2 text-body-secondary">Location: @item.Location</h6>
+                    <h6 class="card-title">Description:</h6>
+                    <p class="card-text">@item.Description .</p>
+                    @if (progressPercentage != 100)
+                    {
+                        <a asp-action="Details" asp-route-id="@item.Id" class="card-link text-white">DONATE NOW !</a>
+
+                    }
+                    @if (progressPercentage == 100)
+                    {
+                        <h5 class="text-light animated fadeIn">
+                            this cause is complete , check another cause !
+                        </h5>
+                    }
+
+                </div>
+            </div>
+            progressPercentage = 0;
+        }
+    }
+
+</div>
+
+
+
+@*----------------------------Hunger-----------------------------*@
+    <h2 class="text-light" style="display:flex;justify-content:center;font-family: cursive;">Hunger</h2>
+
+<div class="my-main-container">
+
+    @foreach (var item in Model)
+    {
+        if (item.Type == "hunger")
+        {
+
+
+            double progressPercentage = Math.Round(((double)item.Act_cost / item.Total_cost) * 100, 3);
+            string progressBarColor = "bg-success"; // Default color is green
+
+            // Change color based on percentage
+            if (progressPercentage < 25)
+            {
+                progressBarColor = "bg-danger"; // Red
+            }
+            else if (progressPercentage < 50)
+            {
+                progressBarColor = "bg-warning"; // Yellow
+            }
+            else if (progressPercentage < 75)
+            {
+                progressBarColor = "bg-info"; // Blue
+            }
+
+
+                <div class="card " style="width: 18rem; background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+
+                <div class="progress" role="progressbar" aria-label="Health Progress" aria-valuenow="@progressPercentage" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar @progressBarColor" style="width: @progressPercentage%">@progressPercentage%</div>
+                </div>
+
+
+                    <img src="~/assets/images/causes/hunger1.jpeg" class="card-img-top" alt="...">
+
+                <div class="card-body">
+                    <h5 class="card-title" style="margin-bottom: 25px">@item.Name</h5>
+
+                    @item.Act_cost -> @item.Total_cost
+                    <h6 class="card-subtitle mb-2 text-body-secondary">Location: @item.Location</h6>
+                    <h6 class="card-title">Description:</h6>
+                    <p class="card-text">@item.Description .</p>
+                    @if (progressPercentage != 100)
+                    {
+                        <a asp-action="Details" asp-route-id="@item.Id" class="card-link text-white">DONATE NOW !</a>
+
+                    }
+                    @if (progressPercentage == 100)
+                    {
+                        <h5 class="text-light animated fadeIn">
+                            this cause is complete , check another cause !
+                        </h5>
+                    }
+
+                </div>
+            </div>
+            progressPercentage = 0;
+        }
+    }
+
+</div>
+
+
+@*----------------------------Human Rights-----------------------------*@
+    <h2 class="text-light" style="display:flex;justify-content:center;font-family: cursive;">Human Rights</h2>
+
+<div class="my-main-container">
+
+
+    @foreach (var item in Model)
+    {
+        if (item.Type == "human-rights")
+        {
+
+
+            double progressPercentage = Math.Round(((double)item.Act_cost / item.Total_cost) * 100, 3);
+            string progressBarColor = "bg-success"; // Default color is green
+
+            // Change color based on percentage
+            if (progressPercentage < 25)
+            {
+                progressBarColor = "bg-danger"; // Red
+            }
+            else if (progressPercentage < 50)
+            {
+                progressBarColor = "bg-warning"; // Yellow
+            }
+            else if (progressPercentage < 75)
+            {
+                progressBarColor = "bg-info"; // Blue
+            }
+
+
+
+                <div class="card " style="width: 18rem; background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+                <div class="progress" role="progressbar" aria-label="Health Progress" aria-valuenow="@progressPercentage" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar @progressBarColor" style="width: @progressPercentage%">@progressPercentage%</div>
+                </div>
+
+
+                    <img src="~/assets/images/causes/human1.jpeg" class="card-img-top" alt="...">
+
+                <div class="card-body">
+                    <h5 class="card-title" style="margin-bottom: 25px">@item.Name</h5>
+
+                    @item.Act_cost -> @item.Total_cost
+                    <h6 class="card-subtitle mb-2 text-body-secondary">Location: @item.Location</h6>
+                    <h6 class="card-title">Description:</h6>
+                    <p class="card-text">@item.Description .</p>
+                    @if (progressPercentage != 100)
+                    {
+                        <a asp-action="Details" asp-route-id="@item.Id" class="card-link text-white">DONATE NOW !</a>
+
+                    }
+                    @if (progressPercentage == 100)
+                    {
+                        <h5 class="text-light animated fadeIn">
+                            this cause is complete , check another cause !
+                        </h5>
+                    }
+
+                </div>
+            </div>
+            progressPercentage = 0;
+        }
+    }
+</div>
+
+
+@*----------------------------Art-----------------------------*@
+    <h2 class="text-light" style="display:flex;justify-content:center;font-family: cursive;">ARTS AND CULTURE</h2>
+
+<div class="my-main-container" >
+
+    @foreach (var item in Model)
+    {
+        if (item.Type == "art")
+        {
+
+            double progressPercentage = Math.Round(((double)item.Act_cost / item.Total_cost) * 100, 3);
+            string progressBarColor = "bg-success"; // Default color is green
+
+            // Change color based on percentage
+            if (progressPercentage < 25)
+            {
+                progressBarColor = "bg-danger"; // Red
+            }
+            else if (progressPercentage < 50)
+            {
+                progressBarColor = "bg-warning"; // Yellow
+            }
+            else if (progressPercentage < 75)
+            {
+                progressBarColor = "bg-info"; // Blue
+            }
+
+
+
+                <div class="card " style="width: 18rem; background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+                <div class="progress" role="progressbar" aria-label="Health Progress" aria-valuenow="@progressPercentage" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar @progressBarColor" style="width: @progressPercentage%">@progressPercentage%</div>
+                </div>
+
+                    <img src="~/assets/images/causes/art1.jpeg" class="card-img-top" alt="...">
+
+                <div class="card-body">
+                    <h5 class="card-title" style="margin-bottom: 25px">@item.Name</h5>
+
+                    @item.Act_cost -> @item.Total_cost
+                    <h6 class="card-subtitle mb-2 text-body-secondary">Location: @item.Location</h6>
+                    <h6 class="card-title">Description:</h6>
+                    <p class="card-text">@item.Description .</p>
+                    @if (progressPercentage != 100)
+                    {
+                        <a asp-action="Details" asp-route-id="@item.Id" class="card-link text-white">DONATE NOW !</a>
+
+                    }
+                    @if (progressPercentage == 100)
+                    {
+                        <h5 class="text-light animated fadeIn">
+                            this cause is complete , check another cause !
+                        </h5>
+                    }
+
+                </div>
+            </div>
+            progressPercentage = 0;
+        }
+    }
+
+</div>
+
+</div>
